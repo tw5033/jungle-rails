@@ -2,6 +2,7 @@ class CartsController < ApplicationController
 
   def show
     @current_user = current_user
+    @cart = cart
   end
 
   def add_item
