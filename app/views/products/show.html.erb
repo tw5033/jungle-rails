@@ -22,8 +22,21 @@
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
           <dt>Rating</dt>
-          <dd><%= @average_rating %></dt>
-          <%= render @reviews%>
+          <dd>
+            <%= @average_rating ?  @average_rating : "Not yet rated!" %>
+          </dd>
+          <dt>Reviews</dt>
+          <dd>
+            <table class="table">
+              <thead>
+                <th>Rating</th>
+                <th>Description</th>
+              </thead>
+              <tbody>
+                <%= render @reviews%>
+              </tbody>
+            </table>
+          </dd>
         </dl>
       </div>
     </div>
