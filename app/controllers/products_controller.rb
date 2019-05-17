@@ -6,8 +6,9 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find params[:id]
-    @reviews = @product.review
-    @average_rating = (@reviews.average :rating).round(2)
+    @current_user = current_user
+    @reviews = @product.review.order(created_at: :desc)
+    @average_rating = (@reviews.average :rating).round(2) unless @reviews.blank?
   end
 
 end

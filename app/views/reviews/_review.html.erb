@@ -5,4 +5,9 @@
   <td>
     <%= review.description %>
   </td>
+  <td>
+    <% if @current_user.id == review.user_id%>
+      <%= button_to "Delete", product_review_path(review.product_id, review.id), method: :delete %>
+    <% end %>
+  </td>
 </tr>
