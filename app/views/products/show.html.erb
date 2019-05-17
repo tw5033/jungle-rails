@@ -5,7 +5,6 @@
   </header>
 
   <article class="product-detail">
-
     <div class="row">
 
       <div class="col-sm-4">
@@ -22,6 +21,9 @@
           <dd><%= @product.sold_out? ? "Out of Stock!" : @product.quantity%></dd>
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
+          <dt>Rating</dt>
+          <dd><%= @average_rating %></dt>
+          <%= render @reviews%>
         </dl>
       </div>
     </div>
