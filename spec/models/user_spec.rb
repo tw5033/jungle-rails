@@ -85,7 +85,7 @@ RSpec.describe User, type: :model do
       )
       expect(user.errors.full_messages).to include('Email has already been taken')
     end
-    
+
     it 'user can not be created when password is less than 6 characters' do
       user = User.create(
         first_name: 'test',
@@ -135,7 +135,7 @@ RSpec.describe User, type: :model do
       expect(user2).to eql(nil)
     end
 
-    it 'should return the correct user' do
+    it 'should return the correct user if white spaces around email' do
       user = User.create(
         first_name: 'test',
         last_name: 'test',
@@ -143,11 +143,11 @@ RSpec.describe User, type: :model do
         password: '123456',
         password_confirmation: '123456'
       )
-      user2 = User.authenticate_with_credentials('123@example.com', '123456')
+      user2 = User.authenticate_with_credentials('    123@example.com    ', '123456')
       expect(user2).to eql(user)
     end
 
-    it 'should return the correct user' do
+    it 'should return the correct user if email is in different case' do
       user = User.create(
         first_name: 'test',
         last_name: 'test',
@@ -155,7 +155,7 @@ RSpec.describe User, type: :model do
         password: '123456',
         password_confirmation: '123456'
       )
-      user2 = User.authenticate_with_credentials('123@example.com', '123456')
+      user2 = User.authenticate_with_credentials('123@examPLe.com', '123456')
       expect(user2).to eql(user)
     end
   end
