@@ -62,6 +62,6 @@ RSpec.describe Product, type: :model do
         category: nil
       )
       expect(product.errors.full_messages).to include("Category can't be blank")
-    end
+      end
   end
 end
